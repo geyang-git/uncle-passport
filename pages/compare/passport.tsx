@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Image, Input, Layout, Space, Table} from '@douyinfe/semi-ui';
+import {Image, Layout, Space, Table} from '@douyinfe/semi-ui';
 import {NextPage} from "next";
 import ResizeObserver from 'rc-resize-observer'
 import axios from "axios";
 import {Title} from "../../components/passport/Title";
 import {IconCheckboxTick} from "@douyinfe/semi-icons";
+import {Cell} from "../../components/passport/Cell";
+import {CountryTitle} from "../../components/passport/Country-title";
 
 const Column = Table.Column;
 const {Content} = Layout;
@@ -65,20 +67,22 @@ const Passport: NextPage = () => {
   const [cellWidth, setCellWidth] = useState(200);
   const [cellLength, setCellLength] = useState(4);
   useEffect(() => {
+    // 获取浏览器上的精确的性能计时
+    const perf = window.performance;
+    // 获取当前时间
+    perf.mark('start');
     // 如果cell宽度不处于 250-350 之间，那么cell的数量根据屏幕宽度计算 保证每个cell宽度在 250-350 之间
     const width = tableWidth / cellLength;
     let length = cellLength;
     if (width < 250) {
       length = Math.floor(tableWidth / 250);
-      setCellLength(length);
-    }
-    if (width > 350) {
+    } else if (width > 350) {
       length = Math.floor(tableWidth / 350);
-      setCellLength(length);
     }
     if (length < 2) {
       length = 2;
     }
+    setCellLength(length);
     setCellWidth(tableWidth / (length + 1));
     // 根据cell的数量生成datalist个数，且不覆盖已有的数据
     const list = []
@@ -93,7 +97,17 @@ const Passport: NextPage = () => {
       }
     }
     setDataList(list);
+    // 结束性能计时
+    perf.mark('end');
+    // 计算性能计时
+    perf.measure('measure', 'start', 'end');
+    // 获取性能计时
+    const measure = perf.getEntriesByName('measure');
+    // 打印性能计时
+    console.log(measure);
   }, [tableWidth]);
+
+  const scroll = {y: 700};
 
   return (
     // 监听屏幕宽度变化 resize
@@ -109,41 +123,18 @@ const Passport: NextPage = () => {
                   return item.region.name.toLowerCase().includes(item2.toLowerCase());
                 })
               })}
+              scroll={scroll}
               pagination={false}
               bordered>
               {/*第一列*/}
               <Column
                 align="left"
-                title={
-                  <Space
-                    vertical
-                    style={{
-                      width: "100%"
-                    }}>
-                    <div style={{height: 140}}>Country</div>
-                    <Input
-                      onChange={(value) => {
-                        setSearch([value]);
-                      }}
-                      suffix={tempSearch.length > 0 && search.length === 1 ? <Button
-                        onClick={() => {
-                          // 将搜索框的值赋值给搜索列表
-                          setSearch(tempSearch);
-                        }}
-                      >
-                        Search
-                      </Button> : search.length > 1 ? <Button
-                        onClick={() => {
-                          // 清空搜索列表
-                          setSearch([""]);
-                          setTempSearch([]);
-                        }}
-                      >
-                        Clear
-                      </Button> : null}
-                    />
-                  </Space>
-                }
+                title={<CountryTitle
+                  setTempSearch={setTempSearch}
+                  search={search}
+                  setSearch={setSearch}
+                  tempSearch={tempSearch}
+                />}
                 onCell={(record, index) => {
                   return {
                     onClick: event => {
@@ -178,6 +169,7 @@ const Passport: NextPage = () => {
                         width={cellWidth}
                         title={<Title region={region} item={item} refresh={refresh}/>}
                         render={(record, index: number) => <Cell record={record}/>}
+                        useFullRender
                       />
                     );
                   }
@@ -198,7 +190,8 @@ const Item = (props: { record: any, tempSearch: string[] }) => {
     style={{
       display: "flex",
       alignItems: "center",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      padding: 16
     }}>
     <Space>
       <Image src={`/country/${record.iso?.toLowerCase()}.svg`} width={16}/>
@@ -206,10 +199,6 @@ const Item = (props: { record: any, tempSearch: string[] }) => {
     </Space>
     {selected && <IconCheckboxTick/>}
   </div>
-}
-
-const Cell = (props: { record: any }) => {
-  return <div>{props.record}</div>
 }
 
 export default Passport;

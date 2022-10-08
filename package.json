@@ -11,7 +11,7 @@
   "dependencies": {
     "@douyinfe/semi-next": "^2.20.3",
     "@douyinfe/semi-ui": "^2.20.3",
-    "@semi-bot/semi-theme-uncle-passport": "^1.0.0",
+    "@semi-bot/semi-theme-uncle-passport": "^1.0.1",
     "axios": "^0.27.2",
     "express": "^4.18.1",
     "http-proxy-middleware": "^2.0.6",

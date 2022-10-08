@@ -397,10 +397,10 @@
   resolved "https://registry.npmmirror.com/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz#8be36a1f66f3265389e90b5f9c9962146758f728"
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
-"@semi-bot/semi-theme-uncle-passport@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@semi-bot/semi-theme-uncle-passport/-/semi-theme-uncle-passport-1.0.0.tgz#49d00d86e062261801a24eb096915d0fa1356eac"
-  integrity sha512-rWJjaOi6hIcACPnumzKzUMl+zEyhZpiRS5cgJQzVVfCJylLqjV8O8wGY+9qpvobiLjaX0fmQELvzuSkTzEAOCw==
+"@semi-bot/semi-theme-uncle-passport@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@semi-bot/semi-theme-uncle-passport/-/semi-theme-uncle-passport-1.0.1.tgz#7b9a9593ef4343927a9acf2ff79d222171756d37"
+  integrity sha512-7ZyxPQjrZApHPs0JTkRVh4LaAqXvsaVMLkCz/wj6vcW+m/Euykmf3BuZg3Tm9U/H7afG6zOXkCL1Ih7L/GVARg==
 
 "@swc/helpers@0.4.11":
   version "0.4.11"
