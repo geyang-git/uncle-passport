@@ -36,7 +36,7 @@ export const Title = (props: {
       filter
       onChange={(value) => {
         axios.get("/api/passport?passport=" + value).then(res => {
-          setCurrent(value);
+          setCurrent(value as string);
           props.item.data = res.data.data.list;
           props.item.group = res.data.data.result;
           props.refresh();

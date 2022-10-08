@@ -28,6 +28,7 @@ const Passport: NextPage = () => {
   const [dataList, setDataList] = useState<{
     name: '',
     data: [],
+    group: any
   }[]>([]);
 
   const getData = () => {
@@ -96,7 +97,7 @@ const Passport: NextPage = () => {
         }
       }
     }
-    setDataList(list);
+    setDataList(list as []);
     // 结束性能计时
     perf.mark('end');
     // 计算性能计时
