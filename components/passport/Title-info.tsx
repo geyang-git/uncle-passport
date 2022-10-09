@@ -22,7 +22,7 @@ export const Info = (props: {
         src={`/next-image/passport/${props.current?.toLowerCase()}.png`}
         preview={
           {
-            src: `/next-image/passport-height${props.current?.toLowerCase()}.png`,
+            src: `/next-image/passport-height/${props.current?.toLowerCase()}.png`,
             // renderPreviewMenu: () => null,
           }
         }
