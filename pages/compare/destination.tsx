@@ -123,7 +123,7 @@ const Destination: NextPage = () => {
       <Layout>
         <Header>
           <NavApp/>
-          <Space vertical align={"center"} style={{width: '100%'}}>
+          <Space vertical align={"center"} style={{width: '100%',padding:"20px 0"}}>
             <Typography.Title>Compare Destinations</Typography.Title>
             <Typography.Text type="tertiary">Select countries and compare their visa policies.</Typography.Text>
           </Space>

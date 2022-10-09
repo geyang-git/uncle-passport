@@ -33,7 +33,7 @@ const Overview: FC = () => {
     <Layout>
       <Header>
         <NavApp />
-        <Space vertical align={"center"} style={{ width: "100%" }}>
+        <Space vertical align={"center"} style={{width: '100%',padding:"20px 0"}}>
           <Typography.Title>Explore the world of passports</Typography.Title>
           <Typography.Text type="tertiary">
             Find your Passport. Explore them all.

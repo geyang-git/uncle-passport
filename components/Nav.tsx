@@ -1,10 +1,12 @@
-import {Nav} from '@douyinfe/semi-ui';
+import {Nav, Toast} from '@douyinfe/semi-ui';
 import {SelectedData} from "@douyinfe/semi-ui/lib/es/navigation/Item";
 import Router from "next/router"
+import Image from "next/image";
+import Logo from "../public/logo.png"
 
 export const NavApp = () => {
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{width: "100%"}}>
       <Nav
         mode={"horizontal"}
         items={[
@@ -19,7 +21,13 @@ export const NavApp = () => {
             itemKey: "rank",
             text: "RANK",
             onClick: (clickItems: SelectedData) => {
-              Router.push("/home/rank").then();
+              const opts = {
+                content: 'The function will be online soon',
+                duration: 2,
+              };
+
+              Toast.info(opts)
+              // Router.push("/home/rank").then();
             },
           },
           {
@@ -45,10 +53,8 @@ export const NavApp = () => {
         ]}
         onSelect={(key) => console.log(key)}
         header={{
-          logo: (
-            <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" />
-          ),
-          text: "Uncle Passport",
+          logo: <Image src={Logo} width={40} height={40}/>,
+          text: 'Uncle Passport'
         }}
         // footer={
         //   <Dropdown

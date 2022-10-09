@@ -14,9 +14,8 @@ export const Info = (props: {
   }
 }) => {
   if (props.current === "") {
-    return <Space style={{height: 80}} vertical>
-      <div>Countries are welcomed</div>
-    </Space>
+    return <div style={{height: 80, display: 'flex', alignItems: "center", justifyContent: 'center'}}>
+      Countries are welcomed</div>
   } else {
     return <Space style={{height: 80}}>
       <Image

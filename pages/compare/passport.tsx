@@ -123,7 +123,7 @@ const Passport: NextPage = () => {
       <Layout>
         <Header>
           <NavApp/>
-          <Space vertical align={"center"} style={{width: '100%'}}>
+          <Space vertical align={"center"} style={{width: '100%',padding:"20px 0"}}>
             <Typography.Title>Compare Passports</Typography.Title>
             <Typography.Text type="tertiary">Select passports and compare them side by side.</Typography.Text>
           </Space>
