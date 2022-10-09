@@ -236,7 +236,7 @@ const Item = (props: { record: any, tempSearch: string[] }) => {
       padding: 16
     }}>
     <Space>
-      <Image src={`/country/${record.iso?.toLowerCase()}.svg`} width={16} preview={false}/>
+      <Image src={`/next-image/country/${record.iso?.toLowerCase()}.svg`} width={16} preview={false}/>
       <div>{record.name}</div>
     </Space>
     {selected && <IconCheckboxTick/>}

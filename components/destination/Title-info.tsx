@@ -19,7 +19,7 @@ export const Info = (props: {
   } else {
     return <Space style={{height: 80}}>
       <Image
-        src={`/country/${props.current?.toLowerCase()}.svg`}
+        src={`/next-image/country/${props.current?.toLowerCase()}.svg`}
         preview={
           {
             src: `/country/${props.current?.toLowerCase()}.svg`,
