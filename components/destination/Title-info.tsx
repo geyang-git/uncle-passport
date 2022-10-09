@@ -1,6 +1,6 @@
 import React from "react";
 import {Image, Space} from "@douyinfe/semi-ui";
-import {Color} from "./Cell";
+import {Color} from "../passport/Cell";
 
 export const Info = (props: {
   region: { iso: string, name: string }[]
@@ -20,10 +20,10 @@ export const Info = (props: {
   } else {
     return <Space style={{height: 80}}>
       <Image
-        src={`/passport/${props.current?.toLowerCase()}.png`}
+        src={`/country/${props.current?.toLowerCase()}.svg`}
         preview={
           {
-            src: `/img/${props.current?.toLowerCase()}.png`,
+            src: `/country/${props.current?.toLowerCase()}.svg`,
           }
         }
         height={60}

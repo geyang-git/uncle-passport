@@ -3,15 +3,15 @@ import {Image, Layout, Space, Table, Typography} from '@douyinfe/semi-ui';
 import {NextPage} from "next";
 import ResizeObserver from 'rc-resize-observer'
 import axios from "axios";
-import {Title} from "../../components/passport/Title";
 import {IconCheckboxTick} from "@douyinfe/semi-icons";
 import {Cell} from "../../components/passport/Cell";
 import {CountryTitle} from "../../components/passport/Country-title";
+import {Title} from "../../components/destination/Title";
 
 const Column = Table.Column;
 const {Content, Header} = Layout;
 
-const Passport: NextPage = () => {
+const Destination: NextPage = () => {
   const [search, setSearch] = useState([""]);
   const [tempSearch, setTempSearch] = useState<string[]>([]);
   const [switchList, setSwitchList] = useState([true, true, true, true]);
@@ -122,8 +122,8 @@ const Passport: NextPage = () => {
       <Layout>
         <Header>
           <Space vertical align={"center"} style={{width: '100%'}}>
-            <Typography.Title>Compare Passports</Typography.Title>
-            <Typography.Text type="tertiary">Select passports and compare them side by side.</Typography.Text>
+            <Typography.Title>Compare Destinations</Typography.Title>
+            <Typography.Text type="tertiary">Select countries and compare their visa policies.</Typography.Text>
           </Space>
         </Header>
         <Content>
@@ -187,7 +187,6 @@ const Passport: NextPage = () => {
                       } else {
                         setTempSearch([...tempSearch, record.region.name]);
                       }
-                      console.log(tempSearch);
                     },
                   };
                 }}
@@ -231,14 +230,14 @@ const Item = (props: { record: any, tempSearch: string[] }) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: 16
+      padding: 10
     }}>
     <Space>
-      <Image src={`/country/${record.iso?.toLowerCase()}.svg`} width={16}/>
+      <Image src={`/passport/${record.iso?.toLowerCase()}.png`} width={16}/>
       <div>{record.name}</div>
     </Space>
     {selected && <IconCheckboxTick/>}
   </div>
 }
 
-export default Passport;
+export default Destination;

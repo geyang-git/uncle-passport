@@ -26,7 +26,7 @@ export const CountryTitle = (props: {
     style={{
       width: "100%"
     }}>
-    <Space style={{height: 140}} align={"end"}>
+    <Space style={{height: 80}} align={"end"}>
       <Space>
         {/*  四个圆形按钮*/}
         {props.switchList.map((item, index) => {
