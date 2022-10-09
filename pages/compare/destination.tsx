@@ -7,6 +7,7 @@ import {IconCheckboxTick} from "@douyinfe/semi-icons";
 import {Cell} from "../../components/passport/Cell";
 import {CountryTitle} from "../../components/passport/Country-title";
 import {Title} from "../../components/destination/Title";
+import {NavApp} from "../../components/Nav";
 
 const Column = Table.Column;
 const {Content, Header} = Layout;
@@ -121,6 +122,7 @@ const Destination: NextPage = () => {
     <Layout>
       <Layout>
         <Header>
+          <NavApp/>
           <Space vertical align={"center"} style={{width: '100%'}}>
             <Typography.Title>Compare Destinations</Typography.Title>
             <Typography.Text type="tertiary">Select countries and compare their visa policies.</Typography.Text>
@@ -233,7 +235,7 @@ const Item = (props: { record: any, tempSearch: string[] }) => {
       padding: 10
     }}>
     <Space>
-      <Image src={`/passport/${record.iso?.toLowerCase()}.png`} width={16}/>
+      <Image src={`/passport/${record.iso?.toLowerCase()}.png`} width={16} preview={false}/>
       <div>{record.name}</div>
     </Space>
     {selected && <IconCheckboxTick/>}

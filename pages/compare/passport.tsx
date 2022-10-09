@@ -7,6 +7,7 @@ import {Title} from "../../components/passport/Title";
 import {IconCheckboxTick} from "@douyinfe/semi-icons";
 import {Cell} from "../../components/passport/Cell";
 import {CountryTitle} from "../../components/passport/Country-title";
+import {NavApp} from "../../components/Nav";
 
 const Column = Table.Column;
 const {Content, Header} = Layout;
@@ -78,8 +79,8 @@ const Passport: NextPage = () => {
     // 如果cell宽度不处于 250-350 之间，那么cell的数量根据屏幕宽度计算 保证每个cell宽度在 250-350 之间
     const width = tableWidth / cellLength;
     let length = cellLength;
-    if (width < 250) {
-      length = Math.floor(tableWidth / 250);
+    if (width < 300) {
+      length = Math.floor(tableWidth / 300);
     } else if (width > 350) {
       length = Math.floor(tableWidth / 350);
     }
@@ -121,6 +122,7 @@ const Passport: NextPage = () => {
     <Layout>
       <Layout>
         <Header>
+          <NavApp/>
           <Space vertical align={"center"} style={{width: '100%'}}>
             <Typography.Title>Compare Passports</Typography.Title>
             <Typography.Text type="tertiary">Select passports and compare them side by side.</Typography.Text>
@@ -234,7 +236,7 @@ const Item = (props: { record: any, tempSearch: string[] }) => {
       padding: 16
     }}>
     <Space>
-      <Image src={`/country/${record.iso?.toLowerCase()}.svg`} width={16}/>
+      <Image src={`/country/${record.iso?.toLowerCase()}.svg`} width={16} preview={false}/>
       <div>{record.name}</div>
     </Space>
     {selected && <IconCheckboxTick/>}

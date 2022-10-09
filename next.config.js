@@ -7,4 +7,11 @@ const semi = require('@douyinfe/semi-next').default({
 module.exports = semi({
   reactStrictMode: true,
   swcMinify: true,
+  async redirects() {
+    return [{
+      source: "/",
+      destination: "/home/overview",
+      permanent: true
+    }];
+  }
 });

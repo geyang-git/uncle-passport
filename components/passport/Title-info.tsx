@@ -24,6 +24,7 @@ export const Info = (props: {
         preview={
           {
             src: `/img/${props.current?.toLowerCase()}.png`,
+            // renderPreviewMenu: () => null,
           }
         }
         height={60}
