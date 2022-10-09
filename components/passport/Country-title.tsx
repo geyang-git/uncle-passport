@@ -7,6 +7,10 @@ export const CountryTitle = (props: {
   setTempSearch: (value: string[]) => void
   tempSearch: string[]
   search: string[]
+  switchList: boolean[]
+  setSwitchList: (value: boolean[]) => void
+  diffSwitch: boolean
+  setDiffSwitch: (value: boolean) => void
 }) => {
   const {
     setSearch,
@@ -15,7 +19,6 @@ export const CountryTitle = (props: {
     search,
   } = props;
 
-  const [switchList, setSwitchList] = useState([true, true, true, true]);
   const openList = [Color.Green, Color.Blue, Color.Orange, Color.Red];
   const closeList = [Color.GreenGray, Color.BlueGray, Color.OrangeGray, Color.RedGray];
   return <Space
@@ -26,7 +29,7 @@ export const CountryTitle = (props: {
     <Space style={{height: 140}} align={"end"}>
       <Space>
         {/*  四个圆形按钮*/}
-        {switchList.map((item, index) => {
+        {props.switchList.map((item, index) => {
             return <div
               key={index}
               style={{
@@ -36,13 +39,24 @@ export const CountryTitle = (props: {
                 backgroundColor: item ? openList[index] : closeList[index],
               }}
               onClick={() => {
-                const list = [...switchList];
+                const list = [...props.switchList];
                 list[index] = !list[index];
-                setSwitchList(list);
+                props.setSwitchList(list);
               }}
             />
           }
         )}
+        <div
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 15,
+            backgroundColor: props.diffSwitch ? Color.Gray : Color.GrayGray,
+          }}
+          onClick={() => {
+            props.setDiffSwitch(!props.diffSwitch);
+          }}
+        />
       </Space>
     </Space>
     <Input

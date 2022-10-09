@@ -14,6 +14,9 @@ const {Content} = Layout;
 const Passport: NextPage = () => {
   const [search, setSearch] = useState([""]);
   const [tempSearch, setTempSearch] = useState<string[]>([]);
+  const [switchList, setSwitchList] = useState([true, true, true, true]);
+  // 对应[Color.Green, Color.Blue, Color.Orange, Color.Red]
+  const [diffSwitch, setDiffSwitch] = useState(true);
 
   // 国家列表
   const [region, setRegion] = useState<{ iso: string, name: string }[]>([]);
@@ -23,7 +26,7 @@ const Passport: NextPage = () => {
     })
   }, [])
 
-  const [dataSource, setData] = useState<any>([]);
+  const [dataSource, setData] = useState<{ key: number, region: { name: string, iso: string }, [key: string]: any }[]>([]);
 
   const [dataList, setDataList] = useState<{
     name: '',
@@ -64,7 +67,7 @@ const Passport: NextPage = () => {
   }, [region, dataList]);
 
   // 根据屏幕宽度计算表格宽度
-  const [tableWidth, setTableWidth] = useState(0);
+  const [tableWidth, setTableWidth] = useState(800);
   const [cellWidth, setCellWidth] = useState(200);
   const [cellLength, setCellLength] = useState(4);
   useEffect(() => {
@@ -85,9 +88,20 @@ const Passport: NextPage = () => {
     }
     setCellLength(length);
     setCellWidth(tableWidth / (length + 1));
+    // 结束性能计时
+    perf.mark('end');
+    // 计算性能计时
+    perf.measure('measure', 'start', 'end');
+    // 获取性能计时
+    const measure = perf.getEntriesByName('measure');
+    // 打印性能计时
+    console.log(measure);
+  }, [tableWidth]);
+
+  useEffect(() => {
     // 根据cell的数量生成datalist个数，且不覆盖已有的数据
     const list = []
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < cellLength; i++) {
       if (dataList[i]) {
         list[i] = dataList[i];
       } else {
@@ -98,15 +112,7 @@ const Passport: NextPage = () => {
       }
     }
     setDataList(list as []);
-    // 结束性能计时
-    perf.mark('end');
-    // 计算性能计时
-    perf.measure('measure', 'start', 'end');
-    // 获取性能计时
-    const measure = perf.getEntriesByName('measure');
-    // 打印性能计时
-    console.log(measure);
-  }, [tableWidth]);
+  }, [cellLength])
 
   const scroll = {y: 700};
 
@@ -119,9 +125,32 @@ const Passport: NextPage = () => {
             setTableWidth(res.width);
           }}>
             <Table
-              dataSource={dataSource.filter((item: any) => {
+              dataSource={dataSource.filter((item) => {
                 return search.some((item2: string) => {
-                  return item.region.name.toLowerCase().includes(item2.toLowerCase());
+                  return (item.region.name.toLowerCase().includes(item2.toLowerCase()) &&
+                    // 过滤掉颜色不符合的数据
+                    Object.keys(item).every((item3: string) => {
+                        if (item3.includes('item') && item[item3]) {
+                          // 判断diffSwitch开关 过滤掉颜色相同的数据
+                          if (diffSwitch) {
+                            return item3 != 'item0' ? item[item3].color !== item.item0.color : true;
+                          }
+                          switch (item[item3].color) {
+                            case 'Green':
+                              return switchList[0];
+                            case 'Blue':
+                              return switchList[1];
+                            case 'Orange':
+                              return switchList[2];
+                            case 'Red':
+                              return switchList[3];
+                          }
+                        } else {
+                          return true;
+                        }
+                      }
+                    )
+                  );
                 })
               })}
               scroll={scroll}
@@ -135,6 +164,10 @@ const Passport: NextPage = () => {
                   search={search}
                   setSearch={setSearch}
                   tempSearch={tempSearch}
+                  setSwitchList={setSwitchList}
+                  switchList={switchList}
+                  diffSwitch={diffSwitch}
+                  setDiffSwitch={setDiffSwitch}
                 />}
                 onCell={(record, index) => {
                   return {

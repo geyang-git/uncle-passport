@@ -1,10 +1,17 @@
 import React from "react";
 import {Image, Space} from "@douyinfe/semi-ui";
+import {Color} from "./Cell";
 
 export const Info = (props: {
   region: { iso: string, name: string }[]
   current: string
-  item: { data: [], name: string, group: Record<string, any[]> }
+  item: {
+    data: [], name: string, group: {
+      colorGroup: {
+        [key: string]: number
+      }
+    }
+  }
 }) => {
   if (props.current === "") {
     return <Space style={{height: 140}} vertical>
@@ -13,26 +20,32 @@ export const Info = (props: {
       </div>
     </Space>
   } else {
-    // 过滤掉key为-1的数据
-    const group = Object.keys(props.item.group).filter((item) => item !== "-1").map((item) => {
-      return {
-        key: item,
-        value: props.item.group[item].length,
-      }
-    })
-    // 筛选前四个value最大的数据
-    group.sort((a, b) => b.value - a.value);
-    const group2 = group.slice(0, 4);
     return <Space style={{height: 140}}>
       <Image
         src={`/passport/${props.current?.toLowerCase()}.png`}
+        preview={
+          {
+            src: `/img/${props.current?.toLowerCase()}.png`,
+          }
+        }
       />
       <Space vertical align={"start"}>
         {
-          group2.map((item) => {
-            return <div key={item.key}>{item.key}
-              : {item.value}</div>
-          })
+          Object.keys(props.item.group.colorGroup)
+            .map((item) => {
+                return <Space key={item}>
+                  <div
+                    style={{
+                      width: 30,
+                      height: 30,
+                      borderRadius: 15,
+                      // @ts-ignore
+                      backgroundColor: Color[item],
+                    }}>{" "}</div>
+                  <div>{props.item.group.colorGroup[item]}</div>
+                </Space>
+              }
+            )
         }
       </Space>
     </Space>
