@@ -4,38 +4,51 @@ import Router from "next/router"
 
 export const NavApp = () => {
   return (
-    <div style={{width: '100%'}}>
+    <div style={{ width: "100%" }}>
       <Nav
-        mode={'horizontal'}
+        mode={"horizontal"}
         items={[
-          {itemKey: 'explore', text: 'EXPLORE'},
-          {itemKey: 'rank', text: 'RANK'},
           {
-            itemKey: 'compare',
-            text: 'COMPARE',
+            itemKey: "explore",
+            text: "EXPLORE",
+            onClick: (clickItems: SelectedData) => {
+              Router.push("/home/explore").then();
+            },
+          },
+          {
+            itemKey: "rank",
+            text: "RANK",
+            onClick: (clickItems: SelectedData) => {
+              Router.push("/home/rank").then();
+            },
+          },
+          {
+            itemKey: "compare",
+            text: "COMPARE",
             items: [
               {
-                itemKey: 'compare-passport',
-                text: 'PASSPORT',
+                itemKey: "compare-passport",
+                text: "PASSPORT",
                 onClick: (clickItems: SelectedData) => {
-                  Router.push('/compare/passport').then();
-                }
+                  Router.push("/compare/passport").then();
+                },
               },
               {
-                itemKey: 'compare-destination',
-                text: 'DESTINATION',
+                itemKey: "compare-destination",
+                text: "DESTINATION",
                 onClick: (clickItems: SelectedData) => {
-                  Router.push('/compare/destination').then();
-                }
-              }
-            ]
-          }
+                  Router.push("/compare/destination").then();
+                },
+              },
+            ],
+          },
         ]}
-        onSelect={key => console.log(key)}
+        onSelect={(key) => console.log(key)}
         header={{
-          logo: <img
-            src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg"/>,
-          text: 'Uncle Passport'
+          logo: (
+            <img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" />
+          ),
+          text: "Uncle Passport",
         }}
         // footer={
         //   <Dropdown
