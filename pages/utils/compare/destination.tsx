@@ -4,10 +4,10 @@ import {NextPage} from "next";
 import ResizeObserver from 'rc-resize-observer'
 import axios from "axios";
 import {IconCheckboxTick} from "@douyinfe/semi-icons";
-import {Cell} from "../../components/passport/Cell";
-import {CountryTitle} from "../../components/passport/Country-title";
-import {Title} from "../../components/destination/Title";
-import {NavApp} from "../../components/Nav";
+import {Cell} from "../../../components/passport/Cell";
+import {CountryTitle} from "../../../components/passport/Country-title";
+import {Title} from "../../../components/destination/Title";
+import {NavApp} from "../../../components/Nav";
 
 const Column = Table.Column;
 const {Content, Header} = Layout;

@@ -14,7 +14,7 @@ export const NavApp = () => {
             itemKey: "explore",
             text: "EXPLORE",
             onClick: (clickItems: SelectedData) => {
-              Router.push("/home/explore").then();
+              Router.push("/utils/explore").then();
             },
           },
           {
@@ -38,14 +38,14 @@ export const NavApp = () => {
                 itemKey: "compare-passport",
                 text: "PASSPORT",
                 onClick: (clickItems: SelectedData) => {
-                  Router.push("/compare/passport").then();
+                  Router.push("/utils/compare/passport").then();
                 },
               },
               {
                 itemKey: "compare-destination",
                 text: "DESTINATION",
                 onClick: (clickItems: SelectedData) => {
-                  Router.push("/compare/destination").then();
+                  Router.push("/utils/compare/destination").then();
                 },
               },
             ],

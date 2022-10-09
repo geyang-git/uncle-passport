@@ -10,7 +10,7 @@ module.exports = semi({
   async redirects() {
     return [{
       source: "/",
-      destination: "/home/overview",
+      destination: "/utils/explore",
       permanent: true
     }];
   }

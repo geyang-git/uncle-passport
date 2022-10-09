@@ -3,11 +3,11 @@ import {Image, Layout, Space, Table, Typography} from '@douyinfe/semi-ui';
 import {NextPage} from "next";
 import ResizeObserver from 'rc-resize-observer'
 import axios from "axios";
-import {Title} from "../../components/passport/Title";
+import {Title} from "../../../components/passport/Title";
 import {IconCheckboxTick} from "@douyinfe/semi-icons";
-import {Cell} from "../../components/passport/Cell";
-import {CountryTitle} from "../../components/passport/Country-title";
-import {NavApp} from "../../components/Nav";
+import {Cell} from "../../../components/passport/Cell";
+import {CountryTitle} from "../../../components/passport/Country-title";
+import {NavApp} from "../../../components/Nav";
 
 const Column = Table.Column;
 const {Content, Header} = Layout;
@@ -123,7 +123,7 @@ const Passport: NextPage = () => {
       <Layout>
         <Header>
           <NavApp/>
-          <Space vertical align={"center"} style={{width: '100%',padding:"20px 0"}}>
+          <Space vertical align={"center"} style={{width: '100%', padding: "20px 0"}}>
             <Typography.Title>Compare Passports</Typography.Title>
             <Typography.Text type="tertiary">Select passports and compare them side by side.</Typography.Text>
           </Space>
