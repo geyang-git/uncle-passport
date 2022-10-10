@@ -33,7 +33,11 @@ const Overview: FC = () => {
     <Layout>
       <Header>
         <NavApp />
-        <Space vertical align={"center"} style={{width: '100%',padding:"20px 0"}}>
+        <Space
+          vertical
+          align={"center"}
+          style={{ width: "100%", padding: "20px 0" }}
+        >
           <Typography.Title>Explore the world of passports</Typography.Title>
           <Typography.Text type="tertiary">
             Find your Passport. Explore them all.
@@ -95,6 +99,9 @@ const Overview: FC = () => {
                     title: tableHeader("MOBILITY SCORE"),
                     dataIndex: "ms",
                     align: "center",
+                    render: (_, record) => {
+                      return <div style={{ margin: 10 }}>{record.ms}</div>;
+                    },
                   },
                   {
                     title: tableHeader("GLOBAL RANK"),
