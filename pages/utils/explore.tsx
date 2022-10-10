@@ -132,11 +132,11 @@ const Overview: FC = () => {
                 }
               >
                 <Image
-                  src={`/passport/${src.iso?.toLowerCase()}.png`}
+                  src={`/next-image/passport/${src.iso?.toLowerCase()}.png`}
                   alt={`PASSPORT OF ${src.name}`}
                   preview={{
                     previewTitle: src.name,
-                    src: `/img/${src.iso?.toLowerCase()}.png`,
+                    src: `/next-image/passport-height/${src.iso?.toLowerCase()}.png`,
                   }}
                   style={{ margin: 5 }}
                 />
