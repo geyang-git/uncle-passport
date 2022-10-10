@@ -21,13 +21,7 @@ export const NavApp = () => {
             itemKey: "rank",
             text: "RANK",
             onClick: (clickItems: SelectedData) => {
-              const opts = {
-                content: 'The function will be online soon',
-                duration: 2,
-              };
-
-              Toast.info(opts)
-              // Router.push("/home/rank").then();
+              Router.push("/utils/rank").then();
             },
           },
           {
