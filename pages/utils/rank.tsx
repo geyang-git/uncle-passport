@@ -15,11 +15,6 @@ import { NavApp } from "../../components/Nav";
 
 const { Header, Sider, Content } = Layout;
 
-echarts.registerMap(
-  "world",
-  require("../../public/map/world-highres3.geo.json")
-);
-
 const rankData = [
   {
     rank: 1,
@@ -66,7 +61,7 @@ const tableHeader = (title: string) => {
 const ECharts = () => {
   echarts.registerMap(
     "world",
-    require("../../public/map/world-highres3.geo.json")
+    require("../../public/next-image/map/world-highres3.geo.json")
   );
 
   const mapOption = {
@@ -210,7 +205,7 @@ const RankList = () => {
                     }}
                   >
                     <Image
-                      src={`/passport/${record.iso?.toLowerCase()}.png`}
+                      src={`/next-image/passport/${record.iso?.toLowerCase()}.png`}
                       alt={`PASSPORT OF ${record.name}`}
                       preview={false}
                       height={80}
