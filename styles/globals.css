@@ -26,3 +26,7 @@ a {
     color: white;
   }
 }
+
+.semi-image-preview-image img {
+  transform: scale(0.5) !important
+}

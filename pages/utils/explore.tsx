@@ -1,4 +1,5 @@
 import {
+  Button,
   Image,
   ImagePreview,
   Layout,
@@ -10,7 +11,6 @@ import {
 import axios from "axios";
 import React, { FC, useEffect, useState } from "react";
 import { NavApp } from "../../components/Nav";
-
 const tableHeader = (title: string) => {
   return <div style={{ color: "#c96", fontSize: 16 }}>{title}</div>;
 };
@@ -54,12 +54,12 @@ const Overview: FC = () => {
             <div
               style={{
                 width: "100vw",
-                height: "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                marginTop: "40px",
+                position: "fixed",
+                top: "15%",
               }}
             >
               <div
@@ -86,43 +86,59 @@ const Overview: FC = () => {
           )}
           renderPreviewMenu={(props) => {
             return (
-              <Table
+              <div
                 style={{
-                  color: "#fff",
-                  fontSize: 30,
-                  fontWeight: "800",
-                  marginBottom: 40,
-                  border: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: "10%",
                 }}
-                columns={[
-                  {
-                    title: tableHeader("MOBILITY SCORE"),
-                    dataIndex: "ms",
-                    align: "center",
-                    render: (_, record) => {
-                      return <div style={{ margin: 10 }}>{record.ms}</div>;
+              >
+                <Table
+                  style={{
+                    color: "#fff",
+                    fontSize: 30,
+                    fontWeight: "800",
+                  }}
+                  columns={[
+                    {
+                      title: tableHeader("MOBILITY SCORE"),
+                      dataIndex: "ms",
+                      align: "center",
+                      render: (_, record) => {
+                        return <div style={{ margin: 10 }}>{record.ms}</div>;
+                      },
                     },
-                  },
-                  {
-                    title: tableHeader("GLOBAL RANK"),
-                    dataIndex: "rank",
-                    align: "center",
-                  },
-                  {
-                    title: tableHeader("INDIVIDUAL RANK"),
-                    dataIndex: "irank",
-                    align: "center",
-                  },
-                ]}
-                dataSource={[
-                  {
-                    ms: passport![props.curPage! - 1].ms,
-                    rank: passport![props.curPage! - 1].rank,
-                    irank: passport![props.curPage! - 1].irank,
-                  },
-                ]}
-                pagination={false}
-              />
+                    {
+                      title: tableHeader("GLOBAL RANK"),
+                      dataIndex: "rank",
+                      align: "center",
+                    },
+                    {
+                      title: tableHeader("INDIVIDUAL RANK"),
+                      dataIndex: "irank",
+                      align: "center",
+                    },
+                  ]}
+                  dataSource={[
+                    {
+                      ms: passport![props.curPage! - 1].ms,
+                      rank: passport![props.curPage! - 1].rank,
+                      irank: passport![props.curPage! - 1].irank,
+                    },
+                  ]}
+                  pagination={false}
+                />
+                <Button
+                  style={{
+                    color: "#c96",
+                    width: "30%",
+                  }}
+                >
+                  DASHBOARD
+                </Button>
+              </div>
             );
           }}
         >

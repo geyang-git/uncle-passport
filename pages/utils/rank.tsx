@@ -89,6 +89,10 @@ const ECharts = () => {
       left: "right",
       min: 0,
       max: 200,
+      colorHue: "#fff",
+      textStyle: {
+        color: "#fff",
+      },
       inRange: {
         color: [
           "#e5cab0",
