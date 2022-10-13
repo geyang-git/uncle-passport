@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@douyinfe/semi-ui";
 import axios from "axios";
+import Router from "next/router";
 import React, { FC, useEffect, useState } from "react";
 import { NavApp } from "../../components/Nav";
 const tableHeader = (title: string) => {
@@ -134,6 +135,13 @@ const Overview: FC = () => {
                   style={{
                     color: "#c96",
                     width: "30%",
+                  }}
+                  onClick={() => {
+                    Router.push(
+                      `/utils/passport?name=${passport![
+                        props.curPage! - 1
+                      ].iso.toUpperCase()}`
+                    ).then();
                   }}
                 >
                   DASHBOARD
