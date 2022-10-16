@@ -70,21 +70,6 @@ const ECharts = () => {
       showDelay: 0,
       transitionDuration: 0.2,
     },
-    toolbox: {
-      show: true,
-      top: "top",
-      feature: {
-        dataView: { show: false },
-        restore: {
-          title: "reset",
-          iconStyle: { borderColor: "#fff" },
-          emphasis: {
-            iconStyle: { borderColor: "#fff" },
-          },
-        },
-        saveAsImage: { show: false },
-      },
-    },
     visualMap: {
       left: "right",
       min: 0,
@@ -120,7 +105,7 @@ const ECharts = () => {
             show: true,
           },
         },
-        data: [{ name: "Russia", value: 100 }],
+        data: [{ name: "Russian Federation", value: 100 }],
       },
     ],
   };
