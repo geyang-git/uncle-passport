@@ -49,6 +49,13 @@ export const NavApp = () => {
             text: "PROGRAM",
             items: [
               {
+                itemKey: "parogram-check",
+                text: "CHECK",
+                onClick: (clickItems: SelectedData) => {
+                  Router.push("/utils/program/check").then();
+                },
+              },
+              {
                 itemKey: "parogram-map",
                 text: "MAP",
                 onClick: (clickItems: SelectedData) => {
